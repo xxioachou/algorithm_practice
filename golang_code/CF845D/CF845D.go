@@ -16,59 +16,61 @@ func solve(_r io.Reader, out io.Writer) {
 		Fscan(in, &n)
 		t := make([]int, n)
 		s := make([]int, n)
+		vis := make([]int, n)
 		for i := range(t) {
 			Fscan(in, &t[i])
 			if t[i] == 1 || t[i] == 3 {
 				Fscan(in, &s[i])
 			}
+			if t[i] == 5 {
+				s[i] = 301
+			}
 		}
 		cnt6, ans := 0, 0
-		cnt := make([]int, 301)
 		for i := 0; i < n; i++ {
-			if t[i] == 1 {
-				for j := 1; j < s[i]; j++ {
-					ans += cnt[j]
-				}
-			}
 			if t[i] == 2 {
 				ans += cnt6
 			}
-			if t[i] == 3 {
-				for j := range(cnt) {
-					cnt[j] = 0
-				}
-				cnt[s[i]] ++
-			}
 			if t[i] == 4 {
 				cnt6 = 0
-			}
-			if t[i] == 5 {
-				for j := range(cnt) {
-					cnt[j] = 0
-				}
 			}
 			if t[i] == 6 {
 				cnt6 ++
 			}
 		}
-		for j := range(cnt) {
-			cnt[j] = 0
+		for i := 0; i < n;  {
+			if t[i] != 1 {
+				i ++
+				continue
+			}
+			j := i + 1
+			for j < n && t[j] != 1 {
+				if t[j] % 2 == 1 && s[j] < s[i] {
+					vis[j] = 1
+				}
+				j ++
+			}
+			i = j
 		}
-		for i := n - 1; i >= 0; i-- {
-			if t[i] == 1 {
-				for j := 1; j < s[i]; j++ {
-					ans += cnt[j]
+		stk := make([]int, 0)
+		for i := 0; i < n; i++ {
+			if t[i] % 2 == 0 {
+				continue
+			}
+
+			if t[i] != 1 {
+				stk = append(stk, i)
+			} else {
+				for len(stk) > 0 && s[stk[len(stk) - 1]] < s[i] {
+					vis[stk[len(stk) - 1]] = 1
+					stk = stk[:len(stk) - 1]
 				}
 			}
-			if t[i] == 3 {
-				cnt[s[i]] ++
-			}
-			if t[i] == 5 {
-				for j := range(cnt) {
-					cnt[j] = 0
-				}
-			}
 		}
+		for i := 0; i < n; i++ {
+			ans += vis[i]
+		}
+
 		Fprintln(out, ans)
 	}
 }

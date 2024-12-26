@@ -1,4 +1,4 @@
-name="CF2042C"
+name="CF845D"
 path="./${name}/"
 cd $path
 

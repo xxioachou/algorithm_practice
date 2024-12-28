@@ -1,30 +1,44 @@
 #include <bits/stdc++.h>
+#define x first
+#define y second
+#define sz(x) ((int)x.size())
 using namespace std;
 
-/*
-    随机底数 a，固定模数 p = 1e9 + 7 的双哈希
-    s 是长度为 n 的字符串
-    h = (a^(n-1) * s[0] + a^(n - 2) * s[1] + ... + a^0 * s[n - 1]) % p
- */
-seed_seq seq {
-    (uint64_t) chrono::duration_cast<chrono::nanoseconds>(chrono::steady_clock::now().time_since_epoch()).count(),
-    (uint64_t) __builtin_ia32_rdtsc(),
-    (uint64_t) (uintptr_t) make_unique<char>().get()
-};
-mt19937 rng(seq);
-const int p = 1e9 + 7;
-const int a1 = uniform_int_distribution<int>(0, p - 1)(rng);
-const int a2 = uniform_int_distribution<int>(0, p - 1)(rng);
+typedef long long ll;
+const int inf = 0x3f3f3f3f;
+const ll INF = 1e18;
 
 void solve() {
-
+    string s;
+    cin >> s;
+    int ok = 1;
+    map<char, int> mp;
+    vector<int> f(3);
+    for (char c : s) {
+        mp[c]++;
+        if (isalpha(c))
+            f[0] ++;
+        else if (isdigit(c))
+            f[1] ++;
+        else
+            f[2] ++;
+    }
+    for (auto [k, c] : mp) {
+        if (c > 2)
+            ok = 0;
+    }
+    if (f[0] and f[1] and f[2]) {
+        cout << (ok ? 2 : 1) << "\n";
+    } else {
+        cout << 0 << "\n";
+    }
 }
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr), cout.tie(nullptr);
     int t = 1;
-    // cin >> t;
+    cin >> t;
     while (t--) solve();
     return 0;
 }

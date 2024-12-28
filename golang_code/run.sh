@@ -1,9 +1,10 @@
-name="CF845D"
-path="./${name}/"
-cd $path
+contest="ABC383"
+cd ./$contest/
+name="E"
+cd ./$name/
 
 out="${name}.out"
-touch out
+touch $out
 file="${name}.go"
 go build $file
 
@@ -16,9 +17,9 @@ do
     ans="${i}.out"
     ./$name < $in > $out
     if diff -Z $out $ans; then
-        printf "AC on test %d\n" $i
-    else
-        printf "WA on test %d\n" $i    
+        printf "AC on test ${i}\n" 
+    else 
+        printf "WA on test ${i}\n"
     fi
     i=`expr $i + 1`
 done

@@ -1,14 +1,17 @@
-name="LC855"
+contest="2024ECFinal"
+cd ./$contest/
+
+name="E"
+# name="BE"
 cd ./$name/
 
-file="${name}.cpp"
+file="./${name}.cpp"
 g++ -g $file -o $name
 
-./$name
+printf "enter the index of test case:"
+read i
+in="${i}.in"
+out="${name}.out"
+touch $out
 
-# printf "enter the index of test case: "
-# read nth
-# in="${nth}.in"
-# out="${name}.out"
-# touch $out
-# ./$name < $in
+./$name < $in

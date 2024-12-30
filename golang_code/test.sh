@@ -1,5 +1,5 @@
-contest="ABC383"
-cd ./$contest/
+# contest="ABC383"
+# cd ./$contest/
 name="E"
 cd ./$name/
 

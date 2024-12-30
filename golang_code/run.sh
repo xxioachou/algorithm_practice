@@ -1,6 +1,6 @@
-contest="ABC383"
-cd ./$contest/
-name="E"
+# contest="ABC383"
+# cd ./$contest/
+name="CF2033D"
 cd ./$name/
 
 out="${name}.out"

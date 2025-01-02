@@ -1,6 +1,6 @@
-contest="2024ECFinal"
-cd ./$contest/
-name="E"
+# contest="2024ECFinal"
+# cd ./$contest/
+name="CF2044H"
 cd ./$name/
 
 file="./${name}.cpp"

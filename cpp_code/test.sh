@@ -1,7 +1,7 @@
-contest="2024ECFinal"
-cd ./$contest/
+# contest="2024ECFinal"
+# cd ./$contest/
 
-name="E"
+name="CF2044H"
 # name="BE"
 cd ./$name/
 

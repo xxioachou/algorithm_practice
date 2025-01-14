@@ -1,6 +1,6 @@
 # contest="ABC383"
 # cd ./$contest/
-name="lanqiao3136"
+name="CF1923C"
 cd ./$name/
 
 file="${name}.go"

@@ -2,7 +2,6 @@ package main
 
 import (
 	"container/heap"
-	"fmt"
 )
 
 type pair struct {
@@ -27,45 +26,33 @@ func (q *que) Push(x any) {
 }
 func (q *que) Pop() any {
 	old := *q
-	*q = old[: len(old) - 1]
+	*q = old[:len(old) - 1]
 	return old[len(old) - 1]
 }
 
 func jump(nums []int) int {
 	n := len(nums)
 	h := make(que, 0)
+	stk := make(que, 0)	
+	ban := make([]bool, n)
 	heap.Init(&h)
-	stk := make([]int, 0)	
-	ban := make([]bool, n + 1)
+	heap.Init(&stk)
 
-	stk = append(stk, 0)
+	heap.Push(&stk, pair{0 + nums[0], 0})
 	heap.Push(&h, pair{0, 0})
 	ans := 0
 	for i := 1; i < n; i++ {
-		for len(stk) > 0 {
-			j := stk[len(stk) - 1]
-			if nums[j] + j < i {
-				stk = stk[: len(stk) - 1]
-				ban[j] = true
-			} else {
-				break
-			}
+		for stk.Len() > 0 && stk[0].x < i{
+			ban[stk[0].y] = true
+			heap.Pop(&stk)
 		}
-		fmt.Println(":", ans)
-		fmt.Println(":stk", stk)
-		for h.Len() > 0 {
-			p := heap.Pop(&h).(pair)
-			if ban[p.y] {
-				continue
-			}
-			ans = p.x + 1
-			heap.Push(&h, p)
-			break
+		for h.Len() > 0 && ban[h[0].y] {
+			heap.Pop(&h)
 		}
-		fmt.Println(":", ans)
+
+		ans = h[0].x + 1
 		heap.Push(&h, pair{ans, i})
-		stk = append(stk, i)
-		fmt.Println("stk", stk)
+		heap.Push(&stk, pair{i + nums[i], i})
 	}
 	return ans
 }

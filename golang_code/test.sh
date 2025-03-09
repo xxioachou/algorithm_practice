@@ -1,6 +1,6 @@
 # contest="ABC383"
 # cd ./$contest/
-name="CF1974D"
+name="LC2209"
 cd ./$name/
 
 file="${name}.go"

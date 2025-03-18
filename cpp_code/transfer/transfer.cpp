@@ -4,28 +4,30 @@ using namespace std;
 void solve() {
     int n;
     cin >> n;
-    deque<pair<int, int>> q;
+    deque<int> q;
+    vector<int> op(n), price(n), t(n), vis(n);
+    for (int i = 0; i < n; i ++) {
+        cin >> op[i] >> price[i] >> t[i];
+    }
     int ans = 0;
-    while (n -- > 0) {
-        int op, price, t;
-        cin >> op >> price >> t;
-
-        if (!op) {
-            ans += price;
-            q.emplace_back(t, price);
+    for (int i = 0; i < n; i ++) {
+        if (op[i] == 0) {
+            ans += price[i];
+            q.push_back(i);
         } else {
-            while (!q.empty() && t - q.front().first > 45) {
+            while (!q.empty() && t[i] - t[q.front()] > 45) {
                 q.pop_front();
             }
             bool ok = false;
             for (auto it = q.begin(); it != q.end(); it ++) {
-                if (it->second >= price) {
+                if (!vis[*it] && price[*it] >= price[i]) {
+                    vis[*it] = 1;
                     ok = true;
                     break;
                 }
             }
             if (!ok) {
-                ans += price;
+                ans += price[i];
             }
         }
     }

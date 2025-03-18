@@ -1,6 +1,6 @@
-# contest="2024ECFinal"
+# contest="nowcoder_week_round85"
 # cd ./$contest/
-name="LC1"
+name="CF1931C"
 cd ./$name/
 
 file="./${name}.cpp"

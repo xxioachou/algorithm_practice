@@ -115,50 +115,62 @@ private:
 };
 
 int main() {
-    {
-        Vector<int> v2(5, 666);
-        v2.print();
-        std::cout << "v2.size(): " << v2.size() << std::endl;
-    }
+    // {
+    //     Vector<int> v2(5, 666);
+    //     v2.print();
+    //     std::cout << "v2.size(): " << v2.size() << std::endl;
+    // }
 
-    {
-        Vector<int> v1;
-        for (int i = 0; i < 20; i ++) {
-            v1.push_back(i);
-        }
-        v1.print();
-        std::cout << "v1.size(): " << v1.size() << std::endl;
+    // {
+    //     Vector<int> v1;
+    //     for (int i = 0; i < 20; i ++) {
+    //         v1.push_back(i);
+    //     }
+    //     v1.print();
+    //     std::cout << "v1.size(): " << v1.size() << std::endl;
 
-        v1.resize(10);
-        v1.print();
-        std::cout << "v1.size(): " << v1.size() << std::endl;
+    //     v1.resize(10);
+    //     v1.print();
+    //     std::cout << "v1.size(): " << v1.size() << std::endl;
 
-        v1.resize(20);
-        v1.print();
-        std::cout << "v1.size(): " << v1.size() << std::endl;
+    //     v1.resize(20);
+    //     v1.print();
+    //     std::cout << "v1.size(): " << v1.size() << std::endl;
 
-        v1.resize(0);
-        v1.print();
-        std::cout << "v1.size(): " << v1.size() << std::endl;
+    //     v1.resize(0);
+    //     v1.print();
+    //     std::cout << "v1.size(): " << v1.size() << std::endl;
 
-        // v1.resize(-1);
-        // 抛出异常
-    }
+    //     // v1.resize(-1);
+    //     // 抛出异常
+    // }
 
-    {
-        Vector<std::string> v1;
-        v1.push_back("Hello");
-        v1.push_back(",");
-        v1.push_back("CPP");
-        v1.print();
+    // {
+    //     Vector<std::string> v1;
+    //     v1.push_back("Hello");
+    //     v1.push_back(",");
+    //     v1.push_back("CPP");
+    //     v1.print();
 
-        auto v2 = std::move(v1);
-        v2.print();
+    //     auto v2 = std::move(v1);
+    //     v2.print();
 
-        v2.push_back("!");
-        v2.print();
-    }
+    //     v2.push_back("!");
+    //     v2.print();
+    // }
 
-    // std::vector<int> v;
+    // // std::vector<int> v;
+ 
+    // struct t {
+    //     long long l;
+    //     union {
+    //         char a[13];
+    //         int b;
+    //     };
+    //     enum { red, green, blue } color;
+    //     virtual void p() = 0;
+    // };
+    // std::cout << "sizeof(t): " << sizeof(t) << '\n';
+
     return 0;
 }

@@ -1,7 +1,7 @@
-contest="xueersi"
-cd ./$contest/
+# contest="xueersi"
+# cd ./$contest/
 
-name="I"
+name="CF709B"
 # name="BE"
 cd ./$name/
 
